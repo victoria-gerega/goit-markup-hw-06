@@ -1,1 +1,1 @@
-goit-homework-5: form elements & modal window
+goit-homework-6: adaptive web design
