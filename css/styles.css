@@ -72,6 +72,7 @@ section {
 .header .container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .header-logo {
@@ -82,7 +83,8 @@ section {
   line-height: 1.17;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  margin-right: 76px;
+  display: block;
+  padding: 16px 0;
 }
 
 .accent {
@@ -90,68 +92,138 @@ section {
   color: #4d5ae5;
 }
 
-.header-list {
-  display: flex;
-  gap: 40px;
+.header-navigation,
+.contacts {
+  display: none;
 }
 
-.header-link {
+.menu-open-btn {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.burger-icon {
   display: block;
-  position: relative;
-  padding: 24px 0px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
+  fill: #2f2f37;
+}
+
+.mob-menu {
+  background-color: #ffffff;
+  padding: 72px 24px 40px 16px;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mob-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.menu-close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #e7e9fc;
+  border-radius: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.menu-close-cross {
+  fill: #2e2f42;
+}
+
+.mob-menu-item:not(:last-child) {
+  margin-bottom: 40px;
+}
+
+.mob-menu-upper {
+  display: flex;
+}
+
+.mob-menu-link {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.11;
   letter-spacing: 0.02em;
   color: #2e2f42;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.header-link::after {
-  content: '';
-  width: 100%;
-  height: 4px;
-  border-radius: 2px;
-  background-color: #404bbf;
-  position: absolute;
-  left: 0;
-  bottom: -1px;
-  opacity: 0;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+.mob-contacts {
+  margin-bottom: 48px;
 }
 
-.header-link:hover::after,
-.header-link:focus::after,
-.header-link.current::after {
-  opacity: 1;
+.mob-contacts-item:not(:last-child) {
+  margin-bottom: 24px;
 }
 
-.contacts {
-  margin-left: auto;
-}
-
-.contacts-list {
-  display: flex;
-  gap: 40px;
-}
-
-.contacts-link {
+.mob-contacts-link {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
   letter-spacing: 0.02em;
   color: #434455;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.header-link:hover,
-.header-link:focus,
-.contacts-link:hover,
-.contacts-link:focus,
-.header-link.current {
+.mob-menu-link:hover,
+.mob-menu-link:focus,
+.mob-menu-link:active,
+.mob-contacts-link:hover,
+.mob-contacts-link:focus,
+.mob-contacts-link:active,
+.mob-menu-link.current,
+.mob-contacts-link.current {
   color: #404bbf;
+}
+
+.mob-socnet {
+  display: flex;
+  gap: 40px;
+}
+
+.mob-item {
+  width: 40px;
+  height: 40px;
+}
+
+.mob-socnet-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #4d5ae5;
+  border-radius: 50%;
+}
+
+.socnet-icon.mob-icon {
+  fill: #f4f4fd;
 }
 
 /*------------ SLOGAN -------------*/
@@ -159,25 +231,31 @@ section {
   background-color: #2e2f42;
   background-image:
     linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
-    url(../images/office.jpg);
+    url(../images/office-mob.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  max-width: 1440px;
+  max-width: 320px;
   margin: 0 auto;
-  padding-top: 188px;
-  padding-bottom: 188px;
+  padding-top: 72px;
+  padding-bottom: 72px;
+
+  @media screen and (min-resolution: 2x), (-webkit-min-device-pixel-ratio: 2) {
+    background-image:
+      linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+      url(../images/office-mob@2x.jpg);
+  }
 }
 
 .slogan-name {
-  font-size: 56px;
-  line-height: 1.07;
+  font-size: 36px;
+  line-height: 1.11;
   letter-spacing: 0.02em;
   text-align: center;
   color: #ffffff;
-  max-width: 496px;
+  max-width: 216px;
   margin: 0 auto;
-  margin-bottom: 48px;
+  margin-bottom: 72px;
 }
 
 .buy-btn {
@@ -236,15 +314,7 @@ section {
 }
 
 .features-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #8e8f99;
-  border-radius: 4px;
-  width: 264px;
-  height: 112px;
-  background-color: #f4f4fd;
-  margin-bottom: 8px;
+  display: none;
 }
 
 .features-subtitle {
@@ -254,6 +324,7 @@ section {
   letter-spacing: 0.02em;
   color: #2e2f42;
   margin-bottom: 8px;
+  text-align: center;
 }
 
 .features-text {
@@ -373,14 +444,7 @@ section {
 
 .cases-item {
   width: 100%;
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cases-item:hover {
-  box-shadow:
-    0 2px 1px 0 rgba(46, 47, 66, 0.08),
-    0 1px 1px 0 rgba(46, 47, 66, 0.16),
-    0 1px 6px 0 rgba(46, 47, 66, 0.08);
+  box-shadow: 0 1px 6px 0 rgba(46, 47, 66, 0.08);
 }
 
 .case-cover {
@@ -821,8 +885,113 @@ section {
     max-width: 768px;
   }
 
+  .header .container {
+    justify-content: space-between;
+  }
+
+  .header-logo {
+    padding: 24px 0;
+    margin-right: 120px;
+  }
+
+  .header-navigation,
+  .contacts {
+    display: block;
+  }
+  .header-list {
+    display: flex;
+    gap: 40px;
+  }
+
+  .header-link {
+    display: block;
+    position: relative;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #2e2f42;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .header-link::after {
+    content: '';
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #404bbf;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    opacity: 0;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .header-link:hover::after,
+  .header-link:focus::after,
+  .header-link.current::after {
+    opacity: 1;
+  }
+
+  .contacts-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
+  .contacts-link {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+    color: #434455;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .header-link:hover,
+  .header-link:focus,
+  .contacts-link:hover,
+  .contacts-link:focus,
+  .header-link.current {
+    color: #404bbf;
+  }
+
+  .menu-open-btn {
+    display: none;
+  }
+
+  .slogan {
+    background-image:
+      linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+      url(../images/office-tab.jpg);
+    max-width: 768px;
+    padding-top: 112px;
+    padding-bottom: 112px;
+
+    @media screen and (min-resolution: 2x),
+      (-webkit-min-device-pixel-ratio: 2) {
+      background-image:
+        linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+        url(../images/office-tab@2x.jpg);
+    }
+  }
+
+  .slogan-name {
+    font-size: 56px;
+    line-height: 1.07;
+    max-width: 496px;
+    margin-bottom: 36px;
+  }
+
   .features-list {
     gap: 72px 24px;
+  }
+
+  .features-subtitle {
+    text-align: left;
   }
 
   .features-item {
@@ -888,6 +1057,42 @@ section {
     padding: 0 15px;
   }
 
+  .header-logo {
+    margin-right: 76px;
+  }
+
+  .contacts-list {
+    flex-wrap: nowrap;
+    gap: 40px;
+  }
+
+  .contacts-link {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  .slogan {
+    background-color: #2e2f42;
+    background-image:
+      linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+      url(../images/office-dt.jpg);
+    max-width: 1440px;
+    padding-top: 188px;
+    padding-bottom: 188px;
+
+    @media screen and (min-resolution: 2x),
+      (-webkit-min-device-pixel-ratio: 2) {
+      background-image:
+        linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+        url(../images/office-dt@2x.jpg);
+    }
+  }
+
+  .slogan-name {
+    margin-bottom: 48px;
+  }
+
   .features {
     padding: 120px 0;
   }
@@ -899,6 +1104,18 @@ section {
 
   .features-item {
     width: calc((100% - 72px) / 4);
+  }
+
+  .features-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #8e8f99;
+    border-radius: 4px;
+    width: 264px;
+    height: 112px;
+    background-color: #f4f4fd;
+    margin-bottom: 8px;
   }
 
   .features-subtitle {
@@ -934,6 +1151,15 @@ section {
 
   .cases-item {
     width: calc((100% - 48px) / 3);
+    box-shadow: none;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .cases-item:hover {
+    box-shadow:
+      0 2px 1px 0 rgba(46, 47, 66, 0.08),
+      0 1px 1px 0 rgba(46, 47, 66, 0.16),
+      0 1px 6px 0 rgba(46, 47, 66, 0.08);
   }
 
   .footer {
